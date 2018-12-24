@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'dotenv/load'
+require 'look_out'
+
+LookOut.configure do |config|
+  config.api_key = ENV['API_KEY']
+end
+
+require 'pry'
+Pry.start
