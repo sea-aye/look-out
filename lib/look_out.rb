@@ -5,6 +5,8 @@ require 'utils/compact'
 require 'look_out/version'
 require 'look_out/client'
 
+require 'look_out/cast'
+
 module LookOut
   class << self
     attr_accessor :config
