@@ -5,6 +5,8 @@ require 'utils/compact'
 require 'look_out/version'
 require 'look_out/client'
 
+require 'look_out/cast'
+
 module LookOut
   class << self
     attr_accessor :config
@@ -16,6 +18,6 @@ module LookOut
   end
 
   class Configuration
-    attr_accessor :api_key
+    attr_accessor :api_key, :env, :repo, :user
   end
 end

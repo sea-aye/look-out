@@ -6,6 +6,9 @@ require 'look_out'
 
 LookOut.configure do |config|
   config.api_key = ENV['API_KEY']
+  config.env = :development
+  config.repo = 'sea-aye/look-out'
+  config.user = `git config user.name`
 end
 
 require 'pry'
