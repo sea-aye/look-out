@@ -4,7 +4,7 @@ module LookOut
   # available until runtime, not load time.
   module Client
     def client
-      base_uri 'https://api.sea-aye.com/v1'
+      base_uri LookOut.config.base_uri
       headers('Content-Type' => 'application/json')
       self
     end
