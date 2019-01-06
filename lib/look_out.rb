@@ -18,6 +18,6 @@ module LookOut
   end
 
   class Configuration
-    attr_accessor :api_key, :env, :repo, :user
+    attr_accessor :api_key, :repo, :user
   end
 end
