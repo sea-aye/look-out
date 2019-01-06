@@ -15,9 +15,12 @@ module LookOut
   def self.configure
     self.config ||= Configuration.new
     yield(config)
+
+    # Allow overriding base_uri.
+    self.config.base_uri ||= 'https://api.sea-aye.com/v1'
   end
 
   class Configuration
-    attr_accessor :api_key, :env, :repo, :user
+    attr_accessor :api_key, :repo, :user, :base_uri
   end
 end

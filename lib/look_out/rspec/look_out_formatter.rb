@@ -15,8 +15,18 @@ module LookOut
           data: output_hash,
           repo: LookOut.config.repo,
           sha: `git log -1 --format=%H`.chomp,
-          env: LookOut.config.env
+          env: env
         )
+      end
+
+      private
+
+      def env
+        if ENV['JENKINS'] || ENV['CI']
+          :integration
+        else
+          :development
+        end
       end
     end
   end
