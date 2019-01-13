@@ -8,7 +8,9 @@ Add this line to your application's Gemfile:
 
 ```ruby
 
-gem 'look-out'
+group :development, :test do
+  gem 'look-out'
+end
 
 ```
 
@@ -16,20 +18,12 @@ And then initialize:
 
 ```ruby
 
+# In rails this would be config/initializers/look_out.rb
+
 LookOut.configure do |config|
   config.api_key = '123'
-  config.env = Rails.env
-  config.repo = 'sea-aye/pirate'
   config.user = `git config user.name`.chomp
 end
-
-```
-
-Add to your 'spec_helper.rb`
-
-```
-
-require 'look_out/rspec/look_out_formatter'
 
 ```
 
@@ -37,6 +31,7 @@ Add to your `.rspec`
 
 ```
 
+--require 'look_out/rspec/look_out_formatter'
 --format LookOut::RSpec::LookOutFormatter
 
 ```
