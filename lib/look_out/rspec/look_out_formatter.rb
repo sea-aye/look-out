@@ -11,6 +11,7 @@ module LookOut
         end
 
         LookOut::Cast.create(
+          api_key: LookOut.config.api_key,
           user: LookOut.config.user,
           data: output_hash,
           repo: LookOut.config.repo,
