@@ -1,3 +1,10 @@
+
+0.1.2 / 2019-01-13
+==================
+
+  * Relax bundler dependency requirement
+  * Include api key in casts.
+
 0.1.1 / 2019-01-06
 ==================
 
