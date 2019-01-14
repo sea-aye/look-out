@@ -9,7 +9,7 @@ Add this line to your application's Gemfile:
 ```ruby
 
 group :development, :test do
-    gem 'look-out', require: false
+    gem 'look_out', require: false
 end
 
 ```
