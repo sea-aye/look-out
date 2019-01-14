@@ -65,6 +65,13 @@ end
 
 Run specs just like normal!
 
+If you're running your specs against merged code you can force reporting for the
+correct sha by setting a special environment variable.
+
+```
+export GIT_COMMIT_SHA='the-real-sha-aavvcc'
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome!
