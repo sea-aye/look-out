@@ -25,6 +25,8 @@ LookOut.configure do |config|
   config.user = `git config user.name`.chomp
 end
 
+```
+
 Add to your `.rspec`
 
 ```
@@ -43,9 +45,32 @@ Add to your `.rspec`
 
 ```
 
+#### VCR
+
+If you're using VCR it may raise an exception for an unexpected HTTP request. If
+so you can ignore it with:
+
+```
+
+VCR.configure do |config|
+  ...
+  config.ignore_hosts 'api.sea-aye.com'
+  ...
+end
+
+```
+
+
 ## Usage
 
 Run specs just like normal!
+
+If you're running your specs against merged code you can force reporting for the
+correct sha by setting a special environment variable.
+
+```
+export GIT_COMMIT_SHA='the-real-sha-aavvcc'
+```
 
 ## Contributing
 

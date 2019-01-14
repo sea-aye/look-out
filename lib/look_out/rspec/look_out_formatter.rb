@@ -15,12 +15,16 @@ module LookOut
           user: LookOut.config.user,
           data: output_hash,
           repo: LookOut.config.repo,
-          sha: `git log -1 --format=%H`.chomp,
+          sha: sha,
           env: env
         )
       end
 
       private
+
+      def sha
+        ENV['GIT_COMMIT_SHA'] || `git log -1 --format=%H`.chomp
+      end
 
       def env
         if ENV['JENKINS'] || ENV['CI']
