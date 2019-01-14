@@ -25,6 +25,8 @@ LookOut.configure do |config|
   config.user = `git config user.name`.chomp
 end
 
+```
+
 Add to your `.rspec`
 
 ```
