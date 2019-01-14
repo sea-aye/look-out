@@ -1,2 +1,4 @@
+--require 'look_out/rspec/look_out_formatter'
+--format LookOut::RSpec::LookOutFormatter
 --format documentation
 --color
