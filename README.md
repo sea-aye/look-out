@@ -9,7 +9,7 @@ Add this line to your application's Gemfile:
 ```ruby
 
 group :development, :test do
-  gem 'look-out'
+    gem 'look-out', require: false
 end
 
 ```
@@ -17,15 +17,13 @@ end
 And then initialize:
 
 ```ruby
+# spec/spec_helper.rb
 
-# In rails this would be config/initializers/look_out.rb
-
+require 'look_out'
 LookOut.configure do |config|
   config.api_key = '123'
   config.user = `git config user.name`.chomp
 end
-
-```
 
 Add to your `.rspec`
 
@@ -33,6 +31,15 @@ Add to your `.rspec`
 
 --require 'look_out/rspec/look_out_formatter'
 --format LookOut::RSpec::LookOutFormatter
+
+# Make sure you have a formatter after this one in your .rspec or there will
+# be no output from your spec suite. For example:
+
+--format doc
+
+# or
+
+--format progress
 
 ```
 
