@@ -10,7 +10,7 @@ module LookOut
           end
         end
 
-        LookOut::Cast.create(
+        response = LookOut::Cast.create(
           api_key: LookOut.config.api_key,
           user: LookOut.config.user,
           data: output_hash,
@@ -18,6 +18,8 @@ module LookOut
           sha: sha,
           env: env
         )
+
+        STDERR.puts "\n[look-out] Cast rejected, check api key.\n" if response.code == 401
       end
 
       private
