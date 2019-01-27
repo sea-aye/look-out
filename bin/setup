@@ -4,5 +4,5 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-cp -i .env.sample .env
-cp -i .env.sample .env.test
+cp -i .env.sample .env || :
+cp -i .env.sample .env.test || :
