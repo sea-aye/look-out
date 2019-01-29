@@ -1,4 +1,10 @@
 
+0.1.4 / 2019-01-28
+==================
+
+  * Print warning if unauthed
+  * Include line numbers and file path
+
 0.1.3 / 2019-01-13
 ==================
 
