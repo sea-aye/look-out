@@ -5,7 +5,7 @@ module LookOut
 
       def close(_notification)
         output_hash[:examples].each do |example|
-          %i(description full_description pending_message).each do |key|
+          %i(full_description pending_message).each do |key|
             example.delete(key)
           end
         end
