@@ -25,7 +25,8 @@ module LookOut
       private
 
       def sha
-        ENV['GIT_COMMIT_SHA'] || `git log -1 --format=%H`.chomp
+        ENV['GIT_COMMIT_SHA'] || ENV['HEROKU_TEST_RUN_COMMIT_VERSION'] ||
+          `git log -1 --format=%H`.chomp
       end
 
       def env
