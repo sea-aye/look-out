@@ -10,6 +10,7 @@ require 'pry'
 require 'vcr'
 require 'look_out'
 LookOut.configure do |config|
+  config.red_cove_api_key = ENV['RED_COVE_API_KEY']
   config.api_key = ENV['FIRST_MATE_API_KEY']
   config.user = `git config user.name`.chomp
 end
@@ -30,7 +31,7 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.ignore_hosts 'api.sea-aye.com'
+  config.ignore_hosts 'api.sea-aye.com', 'red-cove.sea-aye.com'
 
   # Let's you set default VCR mode with VCR=all for re-recording
   # episodes. :once is VCR default.

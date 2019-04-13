@@ -1,5 +1,6 @@
 require 'hashie'
 require 'httparty'
+require 'typhoeus'
 require 'utils/compact'
 
 require 'look_out/version'
@@ -21,6 +22,6 @@ module LookOut
   end
 
   class Configuration
-    attr_accessor :api_key, :repo, :user, :base_uri
+    attr_accessor :api_key, :repo, :user, :base_uri, :red_cove_api_key
   end
 end
