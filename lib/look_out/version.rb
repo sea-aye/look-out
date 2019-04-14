@@ -1,3 +1,3 @@
 module LookOut
-  VERSION = '0.1.7.debug'.freeze
+  VERSION = '0.1.8'.freeze
 end
