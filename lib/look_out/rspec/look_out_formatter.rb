@@ -18,6 +18,7 @@ module LookOut
           first_mate_request = Typhoeus::Request.new(
             'https://first-mate.sea-aye.com/v1/casts',
             method: :post,
+            headers: { 'Content-Type' => 'application/json' },
             body: {
               api_key: LookOut.config.first_mate_api_key,
               data: output_hash,
@@ -26,7 +27,7 @@ module LookOut
                 sha: sha,
                 env: env
               }
-            }
+            }.to_json
           )
 
           hydra.queue(first_mate_request)
