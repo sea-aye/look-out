@@ -12,38 +12,52 @@ module LookOut
           end
         end
 
-        response = LookOut::Cast.create(
-          api_key: LookOut.config.api_key,
-          user: LookOut.config.user,
-          data: output_hash,
-          repo: LookOut.config.repo,
-          sha: sha,
-          env: env
-        )
-
         hydra = Typhoeus::Hydra.hydra
 
-        red_request = Typhoeus::Request.new(
-          'https://red-cove.sea-aye.com/v1/sails',
-          method: :post,
-          body: {
-            api_key: LookOut.config.red_cove_api_key,
-            data: SimpleCov.result.to_hash['RSpec'].to_json,
-            sail: {
-              uid: uid,
-              sha: sha,
-              env: env
-            }
-          }
-        )
+        if LookOut.config.first_mate_api_key
+          first_mate_request = Typhoeus::Request.new(
+            'https://first-mate.sea-aye.com/v1/casts',
+            method: :post,
+            headers: { 'Content-Type' => 'application/json' },
+            body: {
+              api_key: LookOut.config.first_mate_api_key,
+              data: output_hash,
+              cast: {
+                user: LookOut.config.user,
+                sha: sha,
+                env: env
+              }
+            }.to_json
+          )
 
-        hydra.queue(red_request)
+          hydra.queue(first_mate_request)
+        end
+
+        if LookOut.config.red_cove_api_key && defined?(SimpleCov)
+          red_request = Typhoeus::Request.new(
+            'https://red-cove.sea-aye.com/v1/sails',
+            method: :post,
+            body: {
+              api_key: LookOut.config.red_cove_api_key,
+              data: SimpleCov.result.to_hash['RSpec'].to_json,
+              sail: {
+                uid: uid,
+                sha: sha,
+                env: env
+              }
+            }
+          )
+          hydra.queue(red_request)
+        end
+
         hydra.run
 
-        pp red_request
-        pp red_request.response
-
-        STDERR.puts "\n[look-out] Cast rejected, check api key.\n" if response.code == 401
+        if ENV['LOOK_OUT_VERBOSE']
+          pp first_mate_request
+          pp first_mate_request&.response
+          pp red_request
+          pp red_request&.response
+        end
       end
 
       private
