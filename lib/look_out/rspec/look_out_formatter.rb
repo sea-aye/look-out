@@ -40,6 +40,9 @@ module LookOut
         hydra.queue(red_request)
         hydra.run
 
+        pp red_request
+        pp red_request.response
+
         STDERR.puts "\n[look-out] Cast rejected, check api key.\n" if response.code == 401
       end
 
