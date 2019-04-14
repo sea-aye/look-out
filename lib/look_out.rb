@@ -1,12 +1,7 @@
-require 'hashie'
-require 'httparty'
 require 'typhoeus'
 require 'utils/compact'
 
 require 'look_out/version'
-require 'look_out/client'
-
-require 'look_out/cast'
 
 module LookOut
   class << self
@@ -16,12 +11,9 @@ module LookOut
   def self.configure
     self.config ||= Configuration.new
     yield(config)
-
-    # Allow overriding base_uri.
-    self.config.base_uri ||= 'https://api.sea-aye.com/v1'
   end
 
   class Configuration
-    attr_accessor :api_key, :repo, :user, :base_uri, :red_cove_api_key
+    attr_accessor :user, :red_cove_api_key, :first_mate_api_key
   end
 end
