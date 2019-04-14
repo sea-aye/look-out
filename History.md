@@ -1,4 +1,10 @@
 
+0.1.9 / 2019-04-13
+==================
+
+  * Refactor for multithread/multiservice arch
+  * Drop legacy config options
+
 0.1.8 / 2019-04-13
 ==================
 
