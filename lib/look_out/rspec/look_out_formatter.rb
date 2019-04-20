@@ -34,6 +34,7 @@ module LookOut
         end
 
         if LookOut.config.red_cove_api_key && defined?(SimpleCov)
+          SimpleCov.result.format!
           red_request = Typhoeus::Request.new(
             'https://red-cove.sea-aye.com/v1/sails',
             method: :post,
