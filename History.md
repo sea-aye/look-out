@@ -1,4 +1,9 @@
 
+0.1.11 / 2019-04-20
+==================
+
+  * Format SimpleCov coverage and report locally
+
 0.1.10 / 2019-04-18
 ==================
 
