@@ -55,12 +55,12 @@ module LookOut
 
         if first_mate_request&.response&.code == 401
           STDERR.puts "\n[look-out] Cast rejected, check First Mate API Key.\n"
-          STDERR.puts "\n[look-out] https://www.sea-aye.com/first-mate \n"
+          STDERR.puts "[look-out] https://www.sea-aye.com/first-mate \n"
         end
 
         if red_request&.response&.code == 401
           STDERR.puts "\n[look-out] Sail rejected, check Red Cove API Key.\n"
-          STDERR.puts "\n[look-out] https://www.sea-aye.com/red-cove \n"
+          STDERR.puts "[look-out] https://www.sea-aye.com/red-cove \n"
         end
 
         if ENV['LOOK_OUT_VERBOSE']
