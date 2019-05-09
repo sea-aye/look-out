@@ -35,12 +35,16 @@ module LookOut
 
         if LookOut.config.red_cove_api_key && defined?(SimpleCov)
           SimpleCov.result.format!
+          data = {
+            'coverage' => SimpleCov.result.to_hash['RSpec']['coverage'].
+                 transform_keys { |key| key.sub(/^#{SimpleCov.root}/, '') }
+          }
           red_request = Typhoeus::Request.new(
             'https://red-cove.sea-aye.com/v1/sails',
             method: :post,
             body: {
               api_key: LookOut.config.red_cove_api_key,
-              data: SimpleCov.result.to_hash['RSpec'].to_json,
+              data: data.to_json,
               sail: {
                 uid: uid,
                 sha: sha,
