@@ -1,5 +1,4 @@
 require 'typhoeus'
-require 'utils/compact'
 
 require 'look_out/version'
 
