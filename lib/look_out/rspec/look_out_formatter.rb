@@ -16,7 +16,7 @@ module LookOut
 
         if LookOut.config.first_mate_api_key
           first_mate_request = Typhoeus::Request.new(
-            'https://first-mate.sea-aye.com/v1/casts',
+            "#{first_mate_host}/v1/casts",
             method: :post,
             headers: { 'Content-Type' => 'application/json' },
             body: {
@@ -40,7 +40,7 @@ module LookOut
                  transform_keys { |key| key.sub(/^#{SimpleCov.root}/, '') }
           }
           red_request = Typhoeus::Request.new(
-            'https://red-cove.sea-aye.com/v1/sails',
+            "#{red_cove_host}/v1/sails",
             method: :post,
             body: {
               api_key: LookOut.config.red_cove_api_key,
@@ -84,6 +84,14 @@ module LookOut
       def sha
         ENV['GIT_COMMIT_SHA'] || ENV['HEROKU_TEST_RUN_COMMIT_VERSION'] ||
           `git log -1 --format=%H`.chomp
+      end
+
+      def red_cove_host
+        ENV['RED_COVE_HOST'] || 'https://red-cove.sea-aye.com'
+      end
+
+      def first_mate_host
+        ENV['FIRST_MATE_HOST'] || 'https://first-mate.sea-aye.com'
       end
 
       def env
