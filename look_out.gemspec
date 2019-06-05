@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.59'
   spec.add_development_dependency 'simplecov', '~> 0.16'
-  spec.add_development_dependency 'vcr', '~> 4.0'
+  spec.add_development_dependency 'vcr', '~> 5.0'
   spec.add_development_dependency 'webmock', '~> 3.6.0'
 end
