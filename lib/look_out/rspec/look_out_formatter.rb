@@ -78,11 +78,11 @@ module LookOut
       private
 
       def uid
-        ENV['TRAVIS_BUILD_ID'] || ENV['HEROKU_TEST_RUN_ID'] || SecureRandom.hex
+        ENV['TRAVIS_BUILD_ID'] || ENV['HEROKU_TEST_RUN_ID'] || ENV['CIRCLE_WORKFLOW_ID'] || SecureRandom.hex
       end
 
       def sha
-        ENV['GIT_COMMIT_SHA'] || ENV['HEROKU_TEST_RUN_COMMIT_VERSION'] ||
+        ENV['GIT_COMMIT_SHA'] || ENV['HEROKU_TEST_RUN_COMMIT_VERSION'] || ENV['CIRCLE_SHA1'] ||
           `git log -1 --format=%H`.chomp
       end
 
