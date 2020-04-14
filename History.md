@@ -1,4 +1,12 @@
 
+0.1.17 / 2020-04-14
+==================
+
+  * Update casts url
+  * Update webmock requirement from ~> 3.6.0 to ~> 3.7.2
+  * Update vcr requirement from ~> 4.0 to ~> 5.0
+  * Update webmock requirement from ~> 3.5.1 to ~> 3.6.0
+
 0.1.16 / 2019-06-01
 ==================
 
