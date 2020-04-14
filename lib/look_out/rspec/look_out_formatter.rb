@@ -16,7 +16,7 @@ module LookOut
 
         if LookOut.config.first_mate_api_key
           first_mate_request = Typhoeus::Request.new(
-            "#{first_mate_host}/v1/casts",
+            "#{first_mate_host}/casts",
             method: :post,
             headers: { 'Content-Type' => 'application/json' },
             body: {
