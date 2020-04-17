@@ -1,4 +1,11 @@
 
+0.1.18 / 2020-04-16
+==================
+
+  * Update host names
+  * Update rake requirement from ~> 12.3 to ~> 13.0
+  * Update webmock requirement from ~> 3.7.2 to ~> 3.8.3
+
 0.1.17 / 2020-04-14
 ==================
 
