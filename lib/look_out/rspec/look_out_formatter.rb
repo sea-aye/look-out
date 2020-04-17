@@ -40,7 +40,7 @@ module LookOut
                  transform_keys { |key| key.sub(/^#{SimpleCov.root}/, '') }
           }
           red_request = Typhoeus::Request.new(
-            "#{red_cove_host}/v1/sails",
+            "#{red_cove_host}/sails",
             method: :post,
             body: {
               api_key: LookOut.config.red_cove_api_key,
