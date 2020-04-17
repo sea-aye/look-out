@@ -87,11 +87,11 @@ module LookOut
       end
 
       def red_cove_host
-        ENV['RED_COVE_HOST'] || 'https://red-cove.sea-aye.com'
+        ENV['RED_COVE_HOST'] || 'https://sea-aye.com/api/red-cove'
       end
 
       def first_mate_host
-        ENV['FIRST_MATE_HOST'] || 'https://first-mate.sea-aye.com'
+        ENV['FIRST_MATE_HOST'] || 'https://sea-aye.com/api/first-mate'
       end
 
       def env
