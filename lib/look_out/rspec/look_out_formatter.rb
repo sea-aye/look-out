@@ -14,26 +14,24 @@ module LookOut
 
         hydra = Typhoeus::Hydra.hydra
 
-        if LookOut.config.first_mate_api_key
-          first_mate_request = Typhoeus::Request.new(
-            "#{first_mate_host}/casts",
-            method: :post,
-            headers: { 'Content-Type' => 'application/json' },
-            body: {
-              api_key: LookOut.config.first_mate_api_key,
-              data: output_hash,
-              cast: {
-                user: LookOut.config.user,
-                sha: sha,
-                env: env
-              }
-            }.to_json
-          )
+        first_mate_request = Typhoeus::Request.new(
+          "#{first_mate_host}/casts",
+          method: :post,
+          headers: { 'Content-Type' => 'application/json' },
+          body: {
+            api_key: LookOut.config.api_key,
+            data: output_hash,
+            cast: {
+              user: LookOut.config.user,
+              sha: sha,
+              env: env
+            }
+          }.to_json
+        )
 
-          hydra.queue(first_mate_request)
-        end
+        hydra.queue(first_mate_request)
 
-        if LookOut.config.red_cove_api_key && defined?(SimpleCov)
+        if defined?(SimpleCov)
           SimpleCov.result.format!
           data = {
             'coverage' => SimpleCov.result.to_hash['RSpec']['coverage'].
@@ -43,7 +41,7 @@ module LookOut
             "#{red_cove_host}/sails",
             method: :post,
             body: {
-              api_key: LookOut.config.red_cove_api_key,
+              api_key: LookOut.config.api_key,
               data: data.to_json,
               sail: {
                 uid: uid,
@@ -56,16 +54,6 @@ module LookOut
         end
 
         hydra.run
-
-        if first_mate_request&.response&.code == 401
-          STDERR.puts "\n[look-out] Cast rejected, check First Mate API Key.\n"
-          STDERR.puts "[look-out] https://www.sea-aye.com/first-mate \n"
-        end
-
-        if red_request&.response&.code == 401
-          STDERR.puts "\n[look-out] Sail rejected, check Red Cove API Key.\n"
-          STDERR.puts "[look-out] https://www.sea-aye.com/red-cove \n"
-        end
 
         if ENV['LOOK_OUT_VERBOSE']
           pp first_mate_request

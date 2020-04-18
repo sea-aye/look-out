@@ -13,6 +13,6 @@ module LookOut
   end
 
   class Configuration
-    attr_accessor :user, :red_cove_api_key, :first_mate_api_key
+    attr_accessor :user, :api_key
   end
 end
