@@ -46,7 +46,8 @@ module LookOut
               sail: {
                 uid: uid,
                 sha: sha,
-                env: env
+                env: env,
+                integrated: integrated
               }
             }
           )
@@ -82,6 +83,13 @@ module LookOut
         ENV['FIRST_MATE_HOST'] || 'https://sea-aye.com/api/first-mate'
       end
 
+      def integrated
+        if ENV['LOOK_OUT_INTEGRATED']
+          true
+        else
+          false
+        end
+      end
       def env
         if ENV['JENKINS'] || ENV['CI']
           :integration
