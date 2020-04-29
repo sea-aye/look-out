@@ -24,7 +24,8 @@ module LookOut
             cast: {
               user: LookOut.config.user,
               sha: sha,
-              env: env
+              env: env,
+              integrated: integrated
             }
           }.to_json
         )
