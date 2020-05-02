@@ -46,6 +46,7 @@ module LookOut
               data: data.to_json,
               sail: {
                 uid: uid,
+                user: LookOut.config.user,
                 sha: sha,
                 env: env,
                 integrated: integrated
