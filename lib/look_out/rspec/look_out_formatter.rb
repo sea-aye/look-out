@@ -22,7 +22,7 @@ module LookOut
             api_key: LookOut.config.api_key,
             data: output_hash,
             cast: {
-              user: LookOut.config.user,
+              user: user,
               sha: sha,
               env: env,
               integrated: integrated
@@ -46,7 +46,7 @@ module LookOut
               data: data.to_json,
               sail: {
                 uid: uid,
-                user: LookOut.config.user,
+                user: user,
                 sha: sha,
                 env: env,
                 integrated: integrated
@@ -92,6 +92,15 @@ module LookOut
           false
         end
       end
+
+      def user
+        if LookOut.config.user && !LookOut.config.user.empty?
+          LookOut.config.user
+        else
+          ENV['LOOK_OUT_USER'] || `git config user.name`.chomp
+        end
+      end
+
       def env
         if ENV['JENKINS'] || ENV['CI']
           :integration
