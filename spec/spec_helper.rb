@@ -30,7 +30,7 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.ignore_hosts 'localhost', 'first-mate.sea-aye.com', 'red-cove.sea-aye.com'
+  config.ignore_hosts 'localhost', 'sea-aye.com'
 
   # Let's you set default VCR mode with VCR=all for re-recording
   # episodes. :once is VCR default.
