@@ -1,4 +1,12 @@
 
+0.1.25 / 2020-05-30
+==================
+
+  * Add ci script
+  * Update vcr requirement from ~> 5.0 to ~> 6.0
+  * Remove travis yml
+  * Update ignore hosts
+
 0.1.24 / 2020-05-02
 ==================
 
