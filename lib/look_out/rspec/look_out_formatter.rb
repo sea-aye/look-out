@@ -43,7 +43,7 @@ module LookOut
             method: :post,
             body: {
               api_key: LookOut.config.api_key,
-              data: data.to_json,
+              data: data,
               sail: {
                 uid: uid,
                 user: user,
