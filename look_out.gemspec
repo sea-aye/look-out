@@ -18,16 +18,15 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'typhoeus', '~> 1.3'
+  spec.add_dependency 'typhoeus'
 
-  spec.add_development_dependency 'bundler', '>= 1.15', '< 3.0'
-  spec.add_development_dependency 'dotenv', '~> 2.4'
-  spec.add_development_dependency 'look_out'
-  spec.add_development_dependency 'pry', '~> 0.11'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.59'
-  spec.add_development_dependency 'simplecov', '~> 0.16'
-  spec.add_development_dependency 'vcr', '~> 6.0'
-  spec.add_development_dependency 'webmock', '~> 3.8.3'
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'dotenv'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
 end
